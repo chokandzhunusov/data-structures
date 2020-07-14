@@ -1,3 +1,8 @@
+/*
+ * Structure: Grouping data
+ */
+
+
 #include <stdio.h>
 
 
