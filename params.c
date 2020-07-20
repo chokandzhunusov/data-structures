@@ -70,10 +70,26 @@ int area(struct Rectangle r1)
 };
 
 
-void changeLength()
+void changeLength(struct Rectangle *p, int l)
 {
+    /*
+     * Change by address
+     */
+    p -> length = l;
+};
 
-}
+struct containsArray
+{
+    int A[5];
+    int n;
+};
+
+
+void structParamContainsArray(struct containsArray t)
+{
+    t.A[0] = 10;
+    t.A[2] = 11;
+};
 
 
 int main()
@@ -106,4 +122,10 @@ int main()
     printf("%d", area(r));
 
     // eg of passing `structure` to function == Call by Address
+    changeLength(&r, 20);
+
+
+    // eg of passing `structure` that contains array to function == Call by Address
+    struct containsArray t = {{2, 4, 5, 6, 10}, 5};
+    structParamContainsArray(t);
 }
