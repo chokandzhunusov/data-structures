@@ -1,0 +1,8 @@
+Data Structure:
+    - Arrangement of collection of data items so that can be utilized efficiently,
+      inside of main memory while program executed.
+
+
+Database:
+    - Arranging the data in some model(relational),
+      so that it can be retrieved and accessed easily
