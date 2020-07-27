@@ -1,8 +1,18 @@
 Data Structure:
     - Arrangement of collection of data items so that can be utilized efficiently,
-      inside of main memory while program executed.
+      inside of `main memory` while program executed.
 
 
 Database:
-    - Arranging the data in some model(relational),
+    - Arranging the data on disk in some `model`(relational),
       so that it can be retrieved and accessed easily
+
+
+Commercial data (data warehouse):
+    - Operational data.
+    - Legacy data (old data, historical data).
+    * Algorithms that is written for analyzing this kind of data are - data mining algorithms
+
+
+Big data:
+    - Storing and utilizing very big data.
