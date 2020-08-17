@@ -58,3 +58,20 @@ void head_recursion(int n)
         printf("\n%d", n);
     }
 }
+
+
+void head_loop(int n)
+{
+    int i = 1;
+    while(i<=n)
+    {
+        printf("\n%d", i);
+        i++;
+    }
+}
+
+
+int main()
+{
+
+}
