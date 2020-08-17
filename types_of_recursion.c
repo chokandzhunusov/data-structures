@@ -15,9 +15,9 @@
  #include <stdio.h>
 
 
- /* 1. Tail Recursion: if recursion called as last statement,
+ /* 1. Tail Recursion: if recursion called as `last` statement,
  *                     after that call nothing is performed.
- *                     Everything is performed at calling time only,
+ *                     Everything is performed at `calling` time only,
  *                     at returning time nothing performed.
  *                     Usage of loop is better in terms of space complexity.
  */
@@ -42,3 +42,19 @@ void tail_loop(int n)
     }
 }
 
+
+/* 2. Head Recursion: if recursion called as `first` statement,
+ *                     nothing before.
+ *                     Everything is performed at `return` time only.
+ */
+
+
+// Can not be easily converted to loop
+void head_recursion(int n)
+{
+    if (n > 0)
+    {
+        head_recursion(n - 1);
+        printf("\n%d", n);
+    }
+}
