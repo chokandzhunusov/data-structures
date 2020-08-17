@@ -98,9 +98,7 @@ void tree_recursion(int n)
 
 
 
-/* 4. Indirect/Circular Recursion: functions calling each other and creating loop.
- *
- */
+/* 4. Indirect/Circular Recursion: functions calling each other and creating loop. */
 
 void indirect_recursion_B(int n);   //  Prototype of function that have to be used.
 
@@ -121,6 +119,17 @@ void indirect_recursion_B(int n)
         printf("\n%d", n);
         indirect_recursion_A(n/2);
     }
+}
+
+
+/* 5. Nested Recursion: recursion inside of a recursion. */
+
+int nested_recursion(int n)
+{
+    if(n>100)
+        return n-10;
+    else
+        return nested_recursion(nested_recursion(n+11));
 }
 
 
