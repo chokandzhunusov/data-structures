@@ -90,12 +90,38 @@ void tree_recursion(int n)
     }
 }
 
-
 /*  INFO FOR FUNCTION ABOVE:
     1 + 2 + 4 + 8 = 15
     2^0 + 2^1 + 2^2 + 2^3 = 15                  Sum of Geometric Progression Series
     2^0 + 2^1 + 2^2 + 2^3 ... 2^n = 2^(n+1)-1   Highest term polynomial is 2^n
  */
+
+
+
+/* 4. Indirect/Circular Recursion: functions calling each other and creating loop.
+ *
+ */
+
+void indirect_recursion_B(int n);   //  Prototype of function that have to be used.
+
+
+void indirect_recursion_A(int n)
+{
+    if (n > 0)
+    {
+        printf("\n%d", n);
+        indirect_recursion_B(n-1);
+    }
+}
+
+void indirect_recursion_B(int n)
+{
+    if (n > 1)
+    {
+        printf("\n%d", n);
+        indirect_recursion_A(n/2);
+    }
+}
 
 
 int main()
