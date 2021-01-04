@@ -1,0 +1,20 @@
+Data Structures - the way of organizing the data in memory, during execution of program.
+
+List of Data Structures:
+    - Physical DS(how data `arranged` in memory)
+        - Arrays
+        - Matrices
+        - Linked List
+     - Logical DS(how data can be `utilized`)
+        - Stack
+        - Queues
+        - Trees
+        - Graph
+        - Hashing
+
+`Problem Solving` is diff from `Programming`:
+    - Programming: can be learned within a few days
+        - syntax
+    - Problem Solving: lifetime )
+        - math
+        - math don't have `loops`, it has `recursion`
