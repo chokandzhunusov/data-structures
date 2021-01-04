@@ -1,0 +1,9 @@
+=======================
+ARRAYS:
+    1. What is an Array.
+    2. Declaring and Initializing.
+    3. Accessing Array.
+=======================
+
+int x = 10;     in memory allocation it's called - scalar variable. 2 bytes will be allocated
+int Array[5];   vector variable that has single dimension. 10 bytes will be allocated
