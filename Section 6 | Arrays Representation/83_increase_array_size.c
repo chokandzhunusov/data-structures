@@ -12,19 +12,16 @@
 
 int main()
 {
-    int *p = (int *)malloc(5*sizeof(int));
-    int *q = (int *)malloc(10*sizeof(int));
+    // TODO
+    // Initialize two pointer variables of type `int`
+    // Allocate memory for variables above in HEAP with len 5 and 10
 
-    for(int i=0; i<5; i++)
-        p[i] = i*3;
+    // Set some values for var with len 5
+    // Copy var len 5 into var len 10
 
-    for(int j=0; j<5; j++)
-        q[j] = p[j];
+    // Release memory set for var len 5
+    // Set var len 5 to point var len 10
+    // Set var len 10 to be NULL
 
-    free(p);
-    p = q;
-    q = NULL;
-
-    for(int k=0; k<5; k++)
-        printf("%d", p[k]);
+    // Print all p values
 }
