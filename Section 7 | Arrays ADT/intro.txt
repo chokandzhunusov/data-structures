@@ -1,0 +1,24 @@
+=======================
+ARRAYS Abstract Data Type:
+    - DATA
+    1. Array space.
+    2. Size.
+    3. Length(# of elemnts).
+    - OPERATIONS
+    1. Display()
+    2. Add()/Append()
+    3. Insert(index, x)
+    4. Delete(index)
+    5. Search(x)
+    6. Get(index)
+    7. Set(index, x)
+    8. Max()/Min()
+    9. Reverse()
+    10. Shift()/Rotate()
+=======================
+
+- There are 2 methods of creating an Array:
+    1. Statically inside Stack
+        int A[10];
+    2. In Heap
+        int *A;     size will be created during runtime when you will declare malloc function
