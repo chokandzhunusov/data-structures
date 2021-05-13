@@ -13,7 +13,59 @@
 
 
 /*
-A = [4, 8, 10, 15, 18, 21]
+ANALYSIS OF BINARY SEARCH
+=========================
+
+- Time taken to run Binary Search depends on number of comparisons and it is at most `logn`
+
+A = [4, 8, 10, 15, 18, 21, 24, 27, 29, 33, 34, 37, 39, 41, 43]
+     0  1   2   3   4   5   6  7   8   9   10  11  12  13  14
+
+FIRST WAY OF ANALYSIS
+%%%%%%%%%%%%%%%%%%%%%%
+                            7                              Internal pad(success search part)      =========>  1 depth
+             3                          11                 I pad                                  =========>  2
+        1           5             9             13         I pad                                  =========>  3
+    0     2     4       6     8        6    12      14     I pad                                  =========>  4
+  [][]   [][] [][]     [][] [][]     [][]  [][]    [][]    External pad(UNsuccess search part)    =========>  termination level of unsuccessful search
+Successful searches:
+    - Best min time  = O(1), element is in the middle
+    - Worst max time = O(logn)
+Unsuccessful searches:
+    - time = O(logn)
+
+
+SECOND WAY OF ANALYSIS
+%%%%%%%%%%%%%%%%%%%%%%
+NOTE: Inverse of power `x^y` is `log`
+
+Assume n = 16; n: num of items in array
+So, 16/2/2/2/2 = 1(element we were searching in BS)
+
+16/2^4 = 1
+2^4 = 16
+4 = log16base2
+    lognbase2
+
+
+AVARAGE CASE
+%%%%%%%%%%%%%
+- Total time taken on all possible cases, divided by num of cases
+- So, in depth 1 it is only one comparison made wby total 1 element
+- In     depth 2 it is 1 comparison made by total of 2 elements
+- In     depth 3 it is 2 comparison made by total of 4 elements
+- In     depth 4 it is 3 comparison made by total of 8 elements
+By that said:
+    = 1 + 1*2 + 2*4 + 3*8
+    = 1 + 2^1 + 2*2^2 + 3*2*3
+
+      logn (height of tree)
+    = SUMix2^i                / n
+      i=1
+
+    = (logn*2^logn) / n
+    = (logn*n^log2base2) / n
+    = logn
 
 */
 
