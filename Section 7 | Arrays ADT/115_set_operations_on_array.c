@@ -2,7 +2,7 @@
  *  ======================
  *  Set operations on Array
  *  ======================
- *  1. Union: no duplicates
+ *  1. Union: should not copy both elements if same, just one of them
         UNSORTED ELEMENTS: we should not have duplicates
         - m + m*n
         - copying elements from A to C, then first searching elements from B is it in C
@@ -33,7 +33,7 @@
 
 struct Array
 {
-    int A[10];
+    int *A;
     int size;
     int length;
 };
@@ -45,6 +45,69 @@ void Display(struct Array arr)
     printf("\n Elements are \n");
     for(i=0; i<arr.length; i++)
         printf("%d ", arr.A[i]);
+}
+
+
+void InsertInAnArray(struct Array *arr, int x)
+{
+    int i = arr->length-1;
+    while(arr->A[i] > x)
+    {
+        arr->A[i+1] = arr->A[i];
+        i--;
+    }
+    arr->A[i+1] = x;
+}
+
+
+void InsertAtIndex(struct Array *arr, int index, int x)
+{
+    if(index<=arr->length && index>=0)
+    {
+        for(int i=arr->length; i>index; i--)
+        {
+            arr->A[i] = arr->A[i-1];
+        }
+        arr->A[index] = x;
+        arr->length++;
+    }
+}
+
+
+int DeleteAtIndex(struct Array *arr, int index)
+{
+    int i, x;
+    if(index<=arr->length && index>=0)
+    {
+        x = arr->A[index];
+        for(i=index; i<arr->length; i++)
+        {
+            arr->A[i] = arr->A[i+1];
+        }
+        arr->length--;
+        return x;
+    }
+    return -1;
+}
+
+
+int LinearSearch(struct Array *arr, int x)
+{
+    for(int i=0; i<arr->length; i++)
+    {
+        if(arr->A[i] == x)
+            return i;
+    }
+    return -1;
+}
+
+
+int Sum(struct Array *arr)
+{
+    int s = 0;
+    for(int i=0; i<arr->length; i++)
+        s += arr->A[i];
+    return s;
 }
 
 
@@ -183,9 +246,43 @@ struct Array* Merge(struct Array *arr1, struct Array *arr2)
 
 int main()
 {
-    struct Array arr1={{2, 6, 10, 15, 25}, 10, 5};
-    struct Array arr2={{3, 6, 7, 15, 20}, 10, 5};
-    struct Array *arr3;
-    Display(*arr3);
+    struct Array arr;
+    int ch, x, d, s, index;
+    printf("Please enter size of an Array");
+    scanf("%d", &arr.size);
+    arr.A=(int *)malloc(arr.size * sizeof(int));
+    do
+    {
+        printf("Menu to choose action on an Array: \n");
+        printf("1: Insert\n");
+        printf("2: Delete\n");
+        printf("3: Search\n");
+        printf("4: Sum\n");
+        printf("5: Display\n");
+        printf("6: Exit\n");
+
+
+        printf("Please Choose Action on Array \n");
+        scanf("%d", &ch);
+
+        switch(ch)
+        {
+            case 1: printf("Please enter index and number: ");
+                scanf("%d%d", &index, &x);
+                InsertAtIndex(&arr, index, x);
+                break;
+            case 2: printf("Please enter an index: ");
+                scanf("%d", &index);
+                d = DeleteAtIndex(&arr, index);
+                printf("The deleted number is: %d", d);
+            case 3: printf("Please enter number to search: ");
+                scanf("%d", &x);
+                index = LinearSearch(&arr, x);
+                printf("The num you search is at index: %d", index);
+            case 4: s = Sum(&arr);
+                printf("The sum of all elemnts is: %d", s);
+            case 5: Display(arr);
+        }
+    } while(ch<6);
     return 0;
 }
