@@ -250,10 +250,11 @@ int main()
     int ch, x, d, s, index;
     printf("Please enter size of an Array");
     scanf("%d", &arr.size);
+    arr.length = arr.size;
     arr.A=(int *)malloc(arr.size * sizeof(int));
     do
     {
-        printf("Menu to choose action on an Array: \n");
+        printf(" \n Menu to choose action on an Array: \n");
         printf("1: Insert\n");
         printf("2: Delete\n");
         printf("3: Search\n");
@@ -275,13 +276,17 @@ int main()
                 scanf("%d", &index);
                 d = DeleteAtIndex(&arr, index);
                 printf("The deleted number is: %d", d);
+                break;
             case 3: printf("Please enter number to search: ");
                 scanf("%d", &x);
                 index = LinearSearch(&arr, x);
                 printf("The num you search is at index: %d", index);
+                break;
             case 4: s = Sum(&arr);
                 printf("The sum of all elemnts is: %d", s);
+                break;
             case 5: Display(arr);
+                break;
         }
     } while(ch<6);
     return 0;
