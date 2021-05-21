@@ -32,22 +32,54 @@ struct Array
 };
 
 
-int Sum(struct Array *elems)
+void Display(struct Array arr)
 {
-    s = 0
-    for(int i<elems->length; i++)
-        s += elems->A[i];
+    printf("Elemnets are: \n");
+    for(int i=0; i<arr.length; i++)
+    {
+        printf("%d\n", arr.A[i]);
+    }
+}
+
+
+int Sum(struct Array elems)
+{
+    int s = 0;
+    for(int i=0; i<elems.length; i++)
+        s += elems.A[i];
     return s;
 }
 
 
-void FindMissingElemInSeqOfFirstNaturalNums(Array elems)
+void FindMissingElemInSeqOfFirstNaturalNums(struct Array arr)
 {
+    int n = arr.A[arr.length-1];
+    int sumOfNaturalNums = n*(n+1)/2;
+    printf("Missing element is: %d", sumOfNaturalNums-Sum(arr));
+}
 
+
+void FindMissingElemInSeqOfNumbers(struct Array arr)
+{
+    int diff = arr.A[0];
+    for(int i=0; i<arr.length; i++)
+    {
+        if(arr.A[i]-i != diff)
+        {
+            printf("Missing element is: %d", i+diff);
+            break;
+         }
+    }
 }
 
 
 int main()
 {
+    struct Array arr;
+    arr.size = 15;
+    arr.length = 11;
+    arr.A = (int *)malloc(arr.size * sizeof(int));
+    int elems[11] = {6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17};
+    arr.A = elems;
     return 0;
 }
