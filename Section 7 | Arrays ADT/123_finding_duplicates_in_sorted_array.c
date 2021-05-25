@@ -2,6 +2,7 @@
  *  ====================================================
  *  Finding Duplicates in sorted Array and Counting them
  *  ====================================================
+ *  O(n)
  */
 
 #include <stdio.h>
@@ -39,6 +40,29 @@ void FindDuplicate(struct Array arr)
 }
 
 
+void FindAndCountDuplicates(struct Array arr)
+{
+    int j;
+    for(int i=0; i<arr.length-1; i++)
+    {
+        if(arr.A[i] == arr.A[i+1])
+        {
+            j=i;
+            // Do we consider following `while loop`? NO need.
+            // It's covering just a part of an array.
+            // Negligible
+            while(arr.A[i] == arr.A[j])
+                j++;
+            printf("Duplication found, it is: %d, it repeates: %d times\n", arr.A[i], j-i);
+            i = j-1;
+        }
+    }
+}
+
+
+
+
+
 int main()
 {
     struct Array E;
@@ -47,6 +71,6 @@ int main()
     int my_array[10] = {3, 6, 8, 8, 10, 12, 15, 15, 15, 20};
     E.A = my_array;
 
-    FindDuplicate(E);
+    FindAndCountDuplicates(E);
     return 1;
 }
