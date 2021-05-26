@@ -1,7 +1,7 @@
 /*
- *  ============================================================
- *  Finding a pair with sum = K in an array with unique elements
- *  ============================================================
+ *  ===============================================================================
+ *  Finding a pair with sum = K in an array with unique elements in UNSORTED array
+ *  ==============================================================================
  *  - If there are duplicates in an array,
       first you have to remove then and then perform operations
  *
