@@ -13,7 +13,8 @@ int Valid(char *password)
     int i;
     for (i=0; password[i]!='\0'; i++)
     {
-        if(!(password[i]>=65 && password[i]<=90) && !(password[i]>=97 && password[i]<=122) && !(password[i]>=48 && password[i]<=57))
+        if(!(password[i]>=65 && password[i]<=90) && !(password[i]>=97 && password[i]<=122)
+           && !(password[i]>=48 && password[i]<=57))
             return 0;
     }
     return 1;
