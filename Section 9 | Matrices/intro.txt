@@ -1,0 +1,14 @@
+Special Matrices:
+    - square matrices => nxn
+    - more zero(0) elements
+    - so we can store only non zero elemnts and avoid storing zero(0) elements,
+      by that space and computational time can be saved
+
+1. Diagonal Matrix
+2. Lower Triangular Matrix
+3. Upper Triangular Matrix
+4. Symmetric Matrix
+5. Tridiagonal Matrix
+6. Band Matrix
+7. Toeplitz Matrix
+8. Sparse Matrix
