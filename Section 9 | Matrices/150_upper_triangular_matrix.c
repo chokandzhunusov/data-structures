@@ -42,14 +42,14 @@ struct Matrix
 void SetRowMajorMatrix(struct Matrix *m, int i, int j, int x)
 {
     if (i<=j)
-        m->A[j*(j-1)/2 + (i-1)] = x;
+        m->A[m->n*(i-1)-((i-2)*(i-1))/2 + (j-i)] = x;
 }
 
 
 int GetRowMajorMatrix(struct Matrix m, int i, int j)
 {
     if (i>=j)
-        return m.A[j*(j-1)/2 + (i-1)];
+        return m.A[m.n*(i-1)-((i-2)*(i-1))/2 + (j-i)];
     else
         return 0;
 }
@@ -61,8 +61,8 @@ void DisplayRowMajorMatrix(struct Matrix m)
     {
         for(int j=1; j<=m.n; j++)
         {
-            if(i>=j)
-                printf("%d ", m.A[j*(j-1)/2 + (i-1)]);
+            if(i<=j)
+                printf("%d ", m.A[m.n*(i-1)-((i-2)*(i-1))/2 + (j-i)]);
             else
                 printf("0 ");
         }
@@ -74,14 +74,14 @@ void DisplayRowMajorMatrix(struct Matrix m)
 void SetColumnMajorMatrix(struct Matrix *m, int i, int j, int x)
 {
     if (i<=j)
-        m->A[m->n*(i-1)-((i-2)*(i-1))/2 + (j-i)] = x;
+        m->A[j*(j-1)/2 + i-1] = x;
 }
 
 
 int GetColumnMajorMatrix(struct Matrix m, int i, int j)
 {
-    if (i>=j)
-        return m.A[m.n*(i-1)-((i-2)*(i-1))/2 + (j-i)];
+    if (i<=j)
+        return m.A[j*(j-1)/2 + i-1];
     else
         return 0;
 }
@@ -93,8 +93,8 @@ void DisplayColumnMajorMatrix(struct Matrix m)
     {
         for(int j=1; j<=m.n; j++)
         {
-            if(i>=j)
-                printf("%d ", m.A[m.n*(i-1)-((i-2)*(i-1))/2 + (j-i)]);
+            if(i<=j)
+                printf("%d ", m.A[j*(j-1)/2 + i-1]);
             else
                 printf("0 ");
         }
@@ -123,7 +123,7 @@ int main()
 
     printf("\n\n");
 
-    DisplayRowMajorMatrix(m);
+//    DisplayRowMajorMatrix(m);
 //    DisplayColumnMajorMatrix(m);
 
     return 0;
