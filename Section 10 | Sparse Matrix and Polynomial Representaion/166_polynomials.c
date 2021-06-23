@@ -23,65 +23,94 @@ struct Term
 {
     int coeff;  // coefficient
     int exp;    // exponent
-}
+};
 
 
 struct Polynomial
 {
     int n;  // number of terms
     struct Term *t;
-}
+};
 
 
 void Create(struct Polynomial *P)
 {
-    scanf("Please enter num of terms: %d \n", &P->n);
-    P->t = (struct Term *)malloc(P->n * sizeof(struct Element));
+    printf("Please enter num of terms: ");
+    scanf("%d", &P->n);
+    P->t = (struct Term *)malloc(P->n * sizeof(struct Term));
     for (int i=0; i<P->n; i++)
     {
-        printf("Enter coefficient and exponent for term: %d", i+1);
-        scanf("%d%d\n", &P->t[i].coeff, &P->t[i].exp);
+        printf("Enter coefficient and exponent for term: %d\n", i+1);
+        scanf("%d%d", &P->t[i].coeff, &P->t[i].exp);
     }
 }
 
 
 int Evaluate(struct Polynomial P, int x)
 {
-    int i=sum=0;
-    for (i; i<P.n; i++)
+    int i, sum=0;
+    for (i=0; i<P.n; i++)
         sum += P.t[i].coeff * (x * P.t[i].exp);
     return sum;
 }
 
 
-int Add(struct Polynomial P1, struct Polynomial P2)
+void Display(struct Polynomial P)
+{
+    int i;
+    for (i=0; i<P.n; i++)
+        printf("%dx^%d + ", P.t[i].coeff, P.t[i].exp);
+    printf("\n");
+}
+
+
+struct Polynomial * Add(struct Polynomial P1, struct Polynomial P2)
 {
     int i, j, k;
     i=j=k=0;
 
-    while (P1.n<i && P2.n<j)
+    struct Polynomial *P3;
+    P3 = (struct Polynomial *)malloc(sizeof(struct Polynomial));
+    P3->t = (struct Term *)malloc((P1.n+P2.n) * sizeof(struct Term));
+
+    while (i<P1.n && j<P2.n)
     {
-        if (P1.t[i].exp > P2.t[i].exp)
-        {
-            P3.t[k].coeff = P1.t[i].coeff
-            P3.t[k++].exp = P1.t[i++].exp;
-        }
-        else if (P1.t[i].exp < P2.t[i].exp)
-        {
-            P3.t[k].coeff = P2.t[j++].coeff;
-            P3.t[k++].exp = P1.t[j++].exp;
-        }
+        Display(*P3);
+        if (P1.t[i].exp > P2.t[j].exp)
+            P3->t[k++] = P1.t[i++];
+        else if (P1.t[i].exp < P2.t[j].exp)
+            P3->t[k++] = P2.t[j++];
         else
         {
-            P3.t[k].coeff = P1.t[i].coeff + P2.t[j++].coeff;
-            P3.t[k++].exp = P1.t[i].exp;
+            P3->t[k].exp = P1.t[i].exp;
+            P3->t[k++].coeff = P1.t[i++].coeff + P2.t[j++].coeff;
         }
     }
+
+    for (; i<P1.n; i++)
+        P3->t[k++] = P1.t[i];
+
+    for (; j<P2.n; j++)
+        P3->t[k++] = P2.t[j];
+
+    P3->n = k;
+    return P3;
 }
 
 int main()
 {
-    struct Polynomial P;
-    Create(&P);
+    struct Polynomial P1, P2, *P3;
+
+    Create(&P1);
+    Create(&P2);
+    P3 = Add(P1, P2);
+
+    printf("\n");
+    Display(P1);
+    printf("\n");
+    Display(P2);
+    printf("\n");
+    Display(*P3);
+
     return 0;
 }
