@@ -1,6 +1,6 @@
 /*
  *  =====================================
- *  Recursive Display of Linked List
+ *  Counting Nodes of Linked List
  *  =====================================
  */
 
